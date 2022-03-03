@@ -12,3 +12,7 @@ php artisan serve
 
 php artisan migrate
 php artisan make:controller PizzaController -r
+php artisan make:model Pizza -m
+
+fix error mysql
+Schema::defaultStringLength(191);

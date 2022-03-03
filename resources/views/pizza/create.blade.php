@@ -18,9 +18,19 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Pizza</div>
+                <div class="card-header">Create Pizza</div>
 
                 <div class="card-body">
+                @if (count($errors)>0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                               <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+                <form action="{{ route('pizza.store')}}" method="POST">
+                    @csrf
+
                     <div class="mb-3">
                         <label class="form-label" for="name">Name of pizza</label>
                         <input type="text" class="form-control" name="name">
@@ -34,9 +44,9 @@
                             <div class="input-group">
 
                                 <label class="form-label" for="">Pizza price ($)</label>
-                                <input type="number" class="form-control" id="" placeholder="Small pizza price">
-                                <input type="number" class="form-control" id="" placeholder="Medium pizza price">
-                                <input type="number" class="form-control" id="" placeholder="Large pizza price">
+                                <input name="small_price" type="number" class="form-control" id="" placeholder="Small pizza price">
+                                <input name="medium_price" type="number" class="form-control" id="" placeholder="Medium pizza price">
+                                <input name="large_price" type="number" class="form-control" id="" placeholder="Large pizza price">
                             </div>
                         </div>
                     </div>
@@ -61,6 +71,7 @@
                     </div>
 
                 </div>
+                </form>
             </div>
         </div>
     </div>
